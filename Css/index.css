@@ -1,0 +1,18 @@
+div {
+  position: absolute;
+  width: 1349px;
+  height: 500px;
+  top: 90px;
+}
+
+h1 {
+  position: relative;
+  top: 20px;
+  padding-left: 10px;
+}
+
+p {
+  position: relative;
+  top: 40px;
+  padding-left: 10px;
+}

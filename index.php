@@ -12,10 +12,10 @@
   <div>
     <h1>Controle de Estoque</h1>
     <p>Aplicação utilizando PHP com PDO, MySQL e CSS simulando um controle de estoque de site comercial</p>
-    <footer>
-      <hr>
-      <h4>&copy All Rights Reserved, 2018 -- Luis Felipe</h4>
-    </footer>
   </div>
+  <footer>
+    <hr>
+    <h4>&copy All Rights Reserved, 2018 -- Luis Felipe</h4>
+  </footer>
 </body>
 </html>

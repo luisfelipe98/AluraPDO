@@ -1,8 +1,7 @@
 div {
-  position: absolute;
-  width: 1349px;
-  height: 500px;
-  top: 90px;
+  position: relative;
+  width: 100%;
+  height: 520px;
 }
 
 h1 {

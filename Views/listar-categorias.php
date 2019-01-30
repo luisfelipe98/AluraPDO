@@ -11,9 +11,9 @@
   </header>
   <div>
     <?php
-      require_once('../Banco/categoria.php');
-      $categoria = new categoria();
-      $resultado = $categoria->listar();
+      require_once('../Banco/categorias.php');
+      $cat = new categorias();
+      $resultado = $cat->listar();
     ?>
     <h1>Categorias</h1>
     <form action="adicionar-categoria.php">
@@ -28,7 +28,7 @@
       <?php foreach($resultado as $linha) :?>
         <tr>
           <td><?php echo $linha["id"]; ?></td>
-          <td><?php echo $linha["nome"]; ?></td>
+          <td><?php echo utf8_encode($linha["nome"]); ?></td>
           <td>
             <form action="editar-categoria.php">
               <button>Editar</button>

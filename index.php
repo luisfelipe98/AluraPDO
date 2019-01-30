@@ -15,7 +15,7 @@
   </div>
   <footer>
     <hr>
-    <h4>&copy All Rights Reserved, 2018 -- Luis Felipe</h4>
+    <h4>&copy All Rights Reserved, 2018-2019 -- Luis Felipe</h4>
   </footer>
 </body>
 </html>

@@ -22,8 +22,7 @@ class categorias {
     $query = "INSERT INTO categorias (nome) VALUES ('{$categoria->getNome()}')";
     $conexao = Conexao::pegarConexao();
     $conexao->exec($query);
-
-
+    
   }
 
 }

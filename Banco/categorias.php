@@ -1,12 +1,13 @@
 <?php
 require_once("../Classes/Categoria.php");
+require_once("../Classes/Conexao.php");
 
 class categorias {
 
   public function listar() {
 
     $query = "SELECT id, nome FROM categorias";
-    $conexao = new PDO('mysql:host=localhost;dbname=PDO', 'root', '');
+    $conexao = Conexao::pegarConexao();
     $resultado = $conexao->query($query);
     $lista = $resultado->fetchAll();
     return $lista;
@@ -19,7 +20,7 @@ class categorias {
     $categoria->setNome($nome);
 
     $query = "INSERT INTO categorias (nome) VALUES ('{$categoria->getNome()}')";
-    $conexao = new PDO('mysql:host=localhost;dbname=PDO', 'root', '');
+    $conexao = Conexao::pegarConexao();
     $conexao->exec($query);
 
 

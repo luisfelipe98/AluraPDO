@@ -30,7 +30,8 @@
           <td><?php echo $linha["id"]; ?></td>
           <td><?php echo utf8_encode($linha["nome"]); ?></td>
           <td>
-            <form action="editar-categoria.php">
+            <form action="editar-categoria.php" method="POST">
+              <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
               <button>Editar</button>
             </form>
             <form action="excluir-categoria.php">

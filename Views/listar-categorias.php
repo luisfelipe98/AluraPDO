@@ -34,7 +34,8 @@
               <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
               <button>Editar</button>
             </form>
-            <form action="excluir-categoria.php">
+            <form action="../Logica/delete_category.php" method="POST">
+              <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
               <button>Excluir</button>
             </form>
           </td>

@@ -52,5 +52,16 @@ class categorias {
 
   }
 
+  public function deletar($id) {
+
+    $categoria = new Categoria();
+    $categoria->setId($id);
+
+    $query= "DELETE FROM categorias WHERE id = {$categoria->getId()}";
+    $conexao = Conexao::pegarConexao();
+    $resultado = $conexao->exec($query);
+
+  }
+
 }
 ?>

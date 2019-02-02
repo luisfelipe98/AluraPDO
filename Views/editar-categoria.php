@@ -4,7 +4,6 @@ require_once("../Banco/categorias.php");
 require_once("../Classes/Categoria.php");
 
 $id = $_POST['id'];
-var_dump($id);
 
 $categoria = new Categoria();
 $categoria->setId($id);

@@ -2,16 +2,20 @@
 
 require_once('../Banco/categorias.php');
 require_once("../Classes/Categoria.php");
+require_once("../Classes/Erro.php");
 
-$nome = utf8_decode($_POST['nome_categoria']);
+try {
+    $nome = utf8_decode($_POST['nome_categoria']);
 
-$cat = new Categoria();
-$cat->setNome($nome);
+    $cat = new Categoria();
+    $cat->setNome($nome);
 
-$categoria = new categorias();
-$categoria->inserir($cat->getNome());
+    $categoria = new categorias();
+    $categoria->inserir($cat->getNome());
 
-header("Location: ../Views/adicionar-categoria.php");
-
+    header("Location: ../Views/listar-categorias.php");
+} catch (Exception $e) {
+  Erro::trataErro($e);
+}
 
 ?>

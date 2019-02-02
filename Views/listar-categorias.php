@@ -1,5 +1,6 @@
+<?php require_once("../Classes/Erro.php"); ?>
 <html>
-<title>P&aacute;gina Inicial</title>
+<title>Listar Categorias</title>
 </head>
   <link rel="stylesheet" type="text/css" href="../Css/menu.css">
   <link rel="stylesheet" type="text/css" href="../Css/listar-categorias.css">
@@ -12,8 +13,13 @@
   <div>
     <?php
       require_once('../Banco/categorias.php');
-      $cat = new categorias();
-      $resultado = $cat->listar();
+      try {
+        $cat = new categorias();
+        $resultado = $cat->listar();
+      } catch(Exception $e) {
+        Erro::trataErro($e);
+      }
+
     ?>
     <h1>Categorias</h1>
     <form action="adicionar-categoria.php">

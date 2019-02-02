@@ -2,15 +2,20 @@
 
 require_once("../Banco/categorias.php");
 require_once("../Classes/Categoria.php");
+require_once("../Classes/Erro.php");
 
-$id = $_POST['id'];
+try {
+    $id = $_POST['id'];
 
-$categoria = new Categoria();
-$categoria->setId($id);
+    $categoria = new Categoria();
+    $categoria->setId($id);
 
-$cat = new categorias();
-$cat->deletar($categoria->getId());
+    $cat = new categorias();
+    $cat->deletar($categoria->getId());
 
-header("Location: ../Views/listar-categorias.php");
+    header("Location: ../Views/listar-categorias.php");
+} catch(Exception $e) {
+  Erro::trataErro($e);
+}
 
 ?>

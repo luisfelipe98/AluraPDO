@@ -2,15 +2,22 @@
 
 require_once("../Banco/categorias.php");
 require_once("../Classes/Categoria.php");
+require_once("../Classes/Erro.php");
 
-$id = $_POST['id'];
+try{
+  $id = $_POST['id'];
+  $categoria = new Categoria();
+  $categoria->setId($id);
+} catch (Exception $e) {
+  Erro::trataErro($e);
+}
 
-$categoria = new Categoria();
-$categoria->setId($id);
-
-$categorias = new categorias();
-$resultado = $categorias->carregarNome($categoria->getId());
-
+try {
+  $categorias = new categorias();
+  $resultado = $categorias->carregarNome($categoria->getId());
+} catch (Exception $e) {
+  Erro::trataErro($e);
+}
 ?>
 
 <html>

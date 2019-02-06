@@ -7,7 +7,7 @@ class produtos {
   public function listar() {
 
     $query = "SELECT produtos.*, categorias.nome as categoria_nome FROM produtos INNER JOIN categorias ON
-              produtos.categoria_id = categorias.id";
+              produtos.categoria_id = categorias.id ORDER BY produtos.id";
     $conexao = Conexao::pegarConexao();
     $resultado = $conexao->query($query);
     $lista = $resultado->fetchAll();

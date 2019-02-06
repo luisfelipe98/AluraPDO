@@ -13,6 +13,7 @@
     <h3>Criar Nova Categoria</h3>
     <form method="POST" action="../Logica/add_category.php">
       <p>Adicionar uma nova categoria</p>
+      <label>Nome</label> <br>
       <input type="text" name="nome_categoria"> <br>
       <input type="submit" value="Adicionar">
     </form>

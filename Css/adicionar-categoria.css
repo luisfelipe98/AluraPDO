@@ -14,6 +14,10 @@ form {
   position: relative;
 }
 
+label {
+  margin-left: 40px;
+}
+
 p {
   position: relative;
   width: 200px;

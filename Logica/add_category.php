@@ -1,5 +1,4 @@
 <?php
-
 require_once('../Banco/categorias.php');
 require_once("../Classes/Categoria.php");
 require_once("../Classes/Erro.php");

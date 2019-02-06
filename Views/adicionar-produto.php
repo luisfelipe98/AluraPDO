@@ -27,11 +27,11 @@
         <label>Nome</label>
         <input type="text" name="nome" placeholder="Nome">
         <label>Preço</label>
-        <input type="text" name="preco" placeholder="Preço">
+        <input type="number" step="0.01" min="0" name="preco" placeholder="Preço">
         <label>Quantidade</label>
-        <input type="number" step="0.01" min="0" name="quantidade" placeholder="Quantidade">
+        <input type="number" step="1" min="1" name="quantidade" placeholder="Quantidade">
         <label>Categoria</label>
-        <select>
+        <select name="categoria">
           <?php foreach($resultado as $linha): ?>
             <option value="<?php echo $linha['id']; ?>"><?php echo utf8_encode($linha['nome']); ?></option>
           <?php endforeach; ?>

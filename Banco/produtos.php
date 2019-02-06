@@ -15,6 +15,22 @@ class produtos {
 
   }
 
+  public function inserir(Produto $prod) {
+    $produto = new Produto();
+    $produto->setNome($prod->getNome());
+    $produto->setPreco($prod->getPreco());
+    $produto->setQuantidade($prod->getQuantidade());
+    $produto->setCategoria($prod->getCategoria());
+
+    $query = "INSERT INTO produtos (nome, preco, quantidade, categoria_id) VALUES
+              ('{$produto->getNome()}',
+               {$produto->getPreco()},
+               {$produto->getQuantidade()},
+               {$produto->getCategoria()})";
+    $conexao = Conexao::pegarConexao();
+    $conexao->exec($query);
+  }
+
 }
 
 ?>

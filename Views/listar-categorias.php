@@ -19,35 +19,38 @@
       } catch(Exception $e) {
         Erro::trataErro($e);
       }
-
     ?>
     <h1>Categorias</h1>
     <form action="adicionar-categoria.php">
       <button>Adicionar Categoria</button>
     </form>
-    <table>
-      <tr>
-        <th>Código</th>
-        <th>Nome</th>
-        <th>Ações</th>
-      </tr>
-      <?php foreach($resultado as $linha) :?>
+    <?php if (count($resultado) > 0): ?>
+      <table>
         <tr>
-          <td><?php echo $linha["id"]; ?></td>
-          <td><?php echo utf8_encode($linha["nome"]); ?></td>
-          <td>
-            <form action="editar-categoria.php" method="POST">
-              <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
-              <button>Editar</button>
-            </form>
-            <form action="../Logica/delete_category.php" method="POST">
-              <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
-              <button>Excluir</button>
-            </form>
-          </td>
+          <th>Código</th>
+          <th>Nome</th>
+          <th>Ações</th>
         </tr>
-      <?php endforeach; ?>
-    </table>
+        <?php foreach($resultado as $linha) :?>
+          <tr>
+            <td><?php echo $linha["id"]; ?></td>
+            <td><?php echo utf8_encode($linha["nome"]); ?></td>
+            <td>
+              <form action="editar-categoria.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
+                <button>Editar</button>
+              </form>
+              <form action="../Logica/delete_category.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
+                <button>Excluir</button>
+              </form>
+            </td>
+          </tr>
+        <?php endforeach; ?>
+      </table>
+    <?php else: ?>
+      <p>Nenhuma categoria foi cadastrada</p>
+    <?php endif; ?>
   </div>
   <footer>
     <hr>

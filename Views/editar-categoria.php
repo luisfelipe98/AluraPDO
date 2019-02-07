@@ -8,13 +8,9 @@ try{
   $id = $_POST['id'];
   $categoria = new Categoria();
   $categoria->setId($id);
-} catch (Exception $e) {
-  Erro::trataErro($e);
-}
 
-try {
   $categorias = new categorias();
-  $resultado = $categorias->carregarNome($categoria->getId());
+  $resultado = $categorias->carregarNome($categoria);
 } catch (Exception $e) {
   Erro::trataErro($e);
 }

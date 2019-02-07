@@ -16,19 +16,17 @@ class produtos {
   }
 
   public function inserir(Produto $prod) {
-    $produto = new Produto();
-    $produto->setNome($prod->getNome());
-    $produto->setPreco($prod->getPreco());
-    $produto->setQuantidade($prod->getQuantidade());
-    $produto->setCategoria($prod->getCategoria());
 
     $query = "INSERT INTO produtos (nome, preco, quantidade, categoria_id) VALUES
-              ('{$produto->getNome()}',
-               {$produto->getPreco()},
-               {$produto->getQuantidade()},
-               {$produto->getCategoria()})";
+              (:nome, :preco, :quantidade, :categoria_id)";
     $conexao = Conexao::pegarConexao();
-    $conexao->exec($query);
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(':nome', $prod->getNome());
+    $stmt->bindValue(':preco', $prod->getPreco());
+    $stmt->bindValue(':quantidade', $prod->getQuantidade());
+    $stmt->bindValue(':categoria_id', $prod->getCategoria());
+    $stmt->execute();
+
   }
 
 }

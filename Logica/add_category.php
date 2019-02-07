@@ -10,7 +10,7 @@ try {
     $cat->setNome($nome);
 
     $categoria = new categorias();
-    $categoria->inserir($cat->getNome());
+    $categoria->inserir($cat);
 
     header("Location: ../Views/listar-categorias.php");
 } catch (Exception $e) {

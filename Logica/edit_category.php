@@ -12,11 +12,8 @@ try {
     $categoria->setNome($nome);
     $categoria->setId($id);
 
-    var_dump($categoria->getId());
-    var_dump($categoria->getNome());
-
     $cat = new categorias();
-    $cat->atualizar($categoria->getId(), $categoria->getNome());
+    $cat->atualizar($categoria);
 
     header('Location: ../Views/listar-categorias.php');
 } catch(Exception $e) {

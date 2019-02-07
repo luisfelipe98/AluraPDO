@@ -14,52 +14,46 @@ class categorias {
 
   }
 
-  public function inserir($nome) {
+  public function inserir(Categoria $cat) {
 
-    $categoria = new Categoria();
-    $categoria->setNome($nome);
-
-    $query = "INSERT INTO categorias (nome) VALUES ('{$categoria->getNome()}')";
+    $query = "INSERT INTO categorias (nome) VALUES (:nome)";
     $conexao = Conexao::pegarConexao();
-    $conexao->exec($query);
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":nome", $cat->getNome());
+    $stmt->execute();
 
   }
 
-  public function atualizar($id, $nome) {
+  public function atualizar(Categoria $cat) {
 
-    $categoria = new Categoria();
-    $categoria->setNome($nome);
-    $categoria->setId($id);
-
-    $query = "UPDATE categorias SET nome = '{$categoria->getNome()}' WHERE id = {$categoria->getId()}";
+    $query = "UPDATE categorias SET nome = :nome WHERE id = :id";
     $conexao = Conexao::pegarConexao();
-    $conexao->exec($query);
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":nome", $cat->getNome());
+    $stmt->bindValue(":id", $cat->getId());
+    $stmt->execute();
 
   }
 
-  public function carregarNome($id) {
+  public function carregarNome(Categoria $cat) {
 
-    $categoria = new Categoria();
-    $categoria->setId($id);
-
-    $query = "SELECT nome FROM categorias WHERE id = {$categoria->getId()}";
+    $query = "SELECT nome FROM categorias WHERE id = :id";
     $conexao = Conexao::pegarConexao();
-    $resultado = $conexao->query($query);
-    $lista = $resultado->fetchAll();
-    foreach ($lista as $linha) {
-      return $linha;
-    }
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":id", $cat->getId());
+    $stmt->execute();
+    $linha = $stmt->fetch();
+    return $linha;
 
   }
 
-  public function deletar($id) {
+  public function deletar(Categoria $categoria) {
 
-    $categoria = new Categoria();
-    $categoria->setId($id);
-
-    $query= "DELETE FROM categorias WHERE id = {$categoria->getId()}";
+    $query= "DELETE FROM categorias WHERE id = :id";
     $conexao = Conexao::pegarConexao();
-    $resultado = $conexao->exec($query);
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":id", $categoria->getId());
+    $stmt->execute();
 
   }
 

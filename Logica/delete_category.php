@@ -11,7 +11,7 @@ try {
     $categoria->setId($id);
 
     $cat = new categorias();
-    $cat->deletar($categoria->getId());
+    $cat->deletar($categoria);
 
     header("Location: ../Views/listar-categorias.php");
 } catch(Exception $e) {

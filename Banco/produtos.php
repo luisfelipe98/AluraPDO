@@ -29,6 +29,18 @@ class produtos {
 
   }
 
+  public function carregarProduto(Produto $prod) {
+
+    $query = "SELECT id, nome, preco, quantidade, categoria_id FROM produtos WHERE id = :id";
+    $conexao = Conexao::pegarConexao();
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":id", $prod->getId());
+    $stmt->execute();
+    $linha = $stmt->fetch();
+    return $linha;
+    
+  }
+
 }
 
 ?>

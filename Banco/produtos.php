@@ -57,6 +57,16 @@ class produtos {
     $stmt->bindValue(":categoria_id", $prod->getCategoria());
     $stmt->bindValue(":id", $prod->getId());
     $stmt->execute();
+
+  }
+
+  public function deletar(Produto $prod) {
+
+    $query = "DELETE FROM produtos WHERE id = :id";
+    $conexao = Conexao::pegarConexao();
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":id", $prod->getId());
+    $stmt->execute();
     
   }
 

@@ -34,6 +34,7 @@ try{
     <h3>Editar Produto</h3>
     <form action="../Logica/edit_product.php" method="POST">
       <p>Adicionar um novo produto</p>
+      <input type="hidden" value="<?php echo $produto->getId(); ?>" name="id">
       <label>Nome</label>
       <input type="text" name="nome" value="<?php echo utf8_encode($resultado['nome']); ?>" placeholder="Nome">
       <label>Preço</label>
@@ -55,7 +56,7 @@ try{
             <?php $selected = ''; ?>
           <?php endforeach; ?>
       </select>
-      <input type="submit" value="Adicionar">
+      <input type="submit" value="Editar">
     </form>
   </div>
   <footer>

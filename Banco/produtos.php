@@ -38,6 +38,25 @@ class produtos {
     $stmt->execute();
     $linha = $stmt->fetch();
     return $linha;
+
+  }
+
+  public function atualizar(Produto $prod) {
+
+    $query = "UPDATE produtos SET
+                              nome = :nome,
+                              preco = :preco,
+                              quantidade = :quantidade,
+                              categoria_id = :categoria_id
+                              WHERE id = :id";
+    $conexao = Conexao::pegarConexao();
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":nome", $prod->getNome());
+    $stmt->bindValue(":preco", $prod->getPreco());
+    $stmt->bindValue(":quantidade", $prod->getQuantidade());
+    $stmt->bindValue(":categoria_id", $prod->getCategoria());
+    $stmt->bindValue(":id", $prod->getId());
+    $stmt->execute();
     
   }
 

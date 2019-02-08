@@ -36,6 +36,10 @@
             <td><?php echo $linha["id"]; ?></td>
             <td><?php echo utf8_encode($linha["nome"]); ?></td>
             <td>
+              <form action="detalhe-categoria.php" method="POST">
+                <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
+                <button>Detalhes</button>
+              </form>
               <form action="editar-categoria.php" method="POST">
                 <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
                 <button>Editar</button>

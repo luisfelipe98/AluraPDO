@@ -1,5 +1,6 @@
 <?php
 require_once("../Classes/Produto.php");
+require_once("../Classes/Categoria.php");
 require_once("../Classes/Conexao.php");
 
 class produtos {
@@ -67,9 +68,19 @@ class produtos {
     $stmt = $conexao->prepare($query);
     $stmt->bindValue(":id", $prod->getId());
     $stmt->execute();
-    
+
   }
 
-}
+  public function exibirProdutos(Categoria $cat) {
 
+    $query = "SELECT id, nome FROM produtos WHERE categoria_id = :id";
+    $conexao = Conexao::pegarConexao();
+    $stmt = $conexao->prepare($query);
+    $stmt->bindValue(":id", $cat->getId());
+    $stmt->execute();
+    $resultado = $stmt->fetchAll();
+    return $resultado;
+
+  }
+}
 ?>

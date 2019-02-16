@@ -32,9 +32,11 @@
         <input type="number" step="1" min="1" name="quantidade" placeholder="Quantidade">
         <label>Categoria</label>
         <select name="categoria">
+          <option disabled selected>Selecione uma opção</option>
           <?php foreach($resultado as $linha): ?>
             <option value="<?php echo $linha['id']; ?>"><?php echo utf8_encode($linha['nome']); ?></option>
           <?php endforeach; ?>
+          <option value="0">N&atilde;o Tem</option>
         </select>
         <input type="submit" value="Adicionar">
       </form>

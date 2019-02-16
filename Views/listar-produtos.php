@@ -32,6 +32,7 @@
           <th>Pre&ccedil;o</th>
           <th>Quantidade</th>
           <th>Categoria</th>
+          <th>Tem Imagem</th>
           <th>Ações</th>
         </tr>
           <?php foreach($resultado as $linha) :?>
@@ -41,7 +42,12 @@
               <td><?php echo "R$ " . $linha["preco"] ?></td>
               <td><?php echo utf8_encode($linha["quantidade"]); ?></td>
               <td><?php echo utf8_encode($linha["categoria_nome"]); ?></td>
+              <td><?php echo utf8_encode($linha["imagem"]); ?></td>
               <td>
+                <form action="detalhe-produto.php" method="POST">
+                  <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
+                  <button>Detalhes</button>
+                </form>
                 <form action="editar-produto.php" method="POST">
                   <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">
                   <button>Editar</button>

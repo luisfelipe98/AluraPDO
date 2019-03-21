@@ -1,14 +1,18 @@
 <?php
 
 require_once("Categoria.php");
+require_once("Imagem.php");
 
 class Produto {
 
   private $id;
   private $nome;
+  private $descricao;
   private $preco;
   private $quantidade;
-  private $categoria;
+  private Categoria $categoria;
+  private $temImagem;
+  private Imagem $imagem;
 
   public function getId() {
     return $this->id;
@@ -24,6 +28,14 @@ class Produto {
 
   public function setNome($nome) {
     $this->nome = $nome;
+  }
+
+  public function getDescricao() {
+    return $this->descricao;
+  }
+
+  public function setDescricao($descricao) {
+    $this->descricao = $descricao;
   }
 
   public function getPreco() {
@@ -46,8 +58,24 @@ class Produto {
     return $this->categoria;
   }
 
-  public function setCategoria($categoria) {
+  public function setCategoria(Categoria $categoria) {
     $this->categoria = $categoria;
+  }
+
+  public function getTemImagem() {
+    return $this->temImagem;
+  }
+
+  public function setTemImagem($temImagem) {
+    $this->temImagem = $temImagem;
+  }
+
+  public function getImagem(Imagem $imagem) {
+    return $this->imagem;
+  }
+
+  public function setImagem($imagem) {
+    $this->imagem = $imagem;
   }
 
 }

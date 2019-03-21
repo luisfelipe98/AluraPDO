@@ -22,10 +22,12 @@
   <div>
     <h3>Criar Novo Produto</h3>
     <?php if (count($resultado) > 0): ?>
-      <form action="../Logica/add_product.php" method="POST">
+      <form action="../Logica/add_product.php" method="POST" enctype="multipart/form-data">
         <p>Adicionar um novo produto</p>
         <label>Nome</label>
         <input type="text" name="nome" placeholder="Nome">
+        <label>Descrição</label>
+        <textarea name="descricao" placeholder="Descrição"></textarea>
         <label>Preço</label>
         <input type="number" step="0.01" min="0" name="preco" placeholder="Preço">
         <label>Quantidade</label>
@@ -36,8 +38,9 @@
           <?php foreach($resultado as $linha): ?>
             <option value="<?php echo $linha['id']; ?>"><?php echo utf8_encode($linha['nome']); ?></option>
           <?php endforeach; ?>
-          <option value="0">N&atilde;o Tem</option>
         </select>
+        <label>Imagem</label>
+        <input type="file" name="imagem">
         <input type="submit" value="Adicionar">
       </form>
     <?php else: ?>

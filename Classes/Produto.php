@@ -10,9 +10,9 @@ class Produto {
   private $descricao;
   private $preco;
   private $quantidade;
-  private Categoria $categoria;
+  private $categoria;
   private $temImagem;
-  private Imagem $imagem;
+  private $imagem;
 
   public function getId() {
     return $this->id;

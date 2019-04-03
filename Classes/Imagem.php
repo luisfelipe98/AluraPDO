@@ -7,6 +7,7 @@ class Imagem {
   private $id;
   private $nome;
   private $extensao;
+  private $tamanho;
   private $caminho;
   private $produto;
 
@@ -32,6 +33,14 @@ class Imagem {
 
   public function setExtensao($extensao) {
       $this->extensao = $extensao;
+  }
+
+  public function getTamanho() {
+      return $this->tamanho;
+  }
+
+  public function setTamanho($tamanho) {
+      $this->tamanho = $tamanho;
   }
 
   public function getCaminho() {

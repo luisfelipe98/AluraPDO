@@ -42,7 +42,7 @@
               <td><?php echo "R$ " . $linha["preco"] ?></td>
               <td><?php echo utf8_encode($linha["quantidade"]); ?></td>
               <td><?php echo utf8_encode($linha["categoria_nome"]); ?></td>
-              <td><?php echo utf8_encode($linha["imagem"]); ?></td>
+              <td><?php echo utf8_encode($linha["temImagem"]); ?></td>
               <td>
                 <form action="detalhe-produto.php" method="POST">
                   <input type="hidden" name="id" value="<?php echo $linha['id']; ?>">

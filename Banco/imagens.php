@@ -2,6 +2,7 @@
 
 require_once("../Classes/Conexao.php");
 require_once("../Classes/Imagem.php");
+require_once("../Classes/Produto.php");
 
 class imagens {
 
@@ -17,6 +18,16 @@ class imagens {
       $stmt->bindValue(":produto_id", $imagem->getProduto()->getId());
       $stmt->execute();
       return $conexao->lastInsertId();
+    }
+
+    public function adicionarProduto (Imagem $imagem) {
+      $query = "UPDATE imagens SET produto_id = :produto_id WHERE id = :id";
+      $conexao = Conexao::pegarConexao();
+      $stmt = $conexao->prepare($query);
+      $stmt->bindValue(":produto_id", $imagem->getProduto()->getId());
+      $stmt->bindValue(":id", $imagem->getId());
+      $resposta = $stmt->execute();
+      return $resposta;
     }
 
 

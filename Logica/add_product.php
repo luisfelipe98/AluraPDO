@@ -74,10 +74,25 @@ try {
   $prod = new produtos();
   $produtoId = $prod->inserir($produto);
 
-  echo $produtoId;
-  die();
+  if ($produtoId == 0) {
+    header("Location: ../Views/adicionar-produto.php");
+    die();
+  } else {
+    $produto->setId($produtoId);
+  }
 
-  header("Location: ../Views/listar-produtos.php");
+  $image = new Imagem();
+  $image->setId($img->getId());
+  $image->setProduto($produto);
+  $resposta = $i->adicionarProduto($image);
+
+  if ($resposta) {
+    header("Location: ../Views/listar-produtos.php");
+  } else {
+    var_dump($resposta);
+  }
+
+
 
 } catch (Exception $e) {
   Erro::trataErro($e);

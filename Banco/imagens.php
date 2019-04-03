@@ -15,8 +15,8 @@ class imagens {
       $stmt->bindValue(":tamanho", $imagem->getTamanho());
       $stmt->bindValue(":caminho", $imagem->getCaminho());
       $stmt->bindValue(":produto_id", $imagem->getProduto()->getId());
-      $resposta = $stmt->execute();
-      return $resposta;
+      $stmt->execute();
+      return $conexao->lastInsertId();
     }
 
 

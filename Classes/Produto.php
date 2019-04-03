@@ -70,11 +70,11 @@ class Produto {
     $this->temImagem = $temImagem;
   }
 
-  public function getImagem(Imagem $imagem) {
+  public function getImagem() {
     return $this->imagem;
   }
 
-  public function setImagem($imagem) {
+  public function setImagem(Imagem $imagem) {
     $this->imagem = $imagem;
   }
 

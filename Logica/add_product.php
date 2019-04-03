@@ -32,23 +32,27 @@ try {
         $img->setProduto($p);
       } else {
         header("Location: ../Views/adicionar-produto.php");
+        die();
       }
     } else {
       header("Location: ../Views/adicionar-produto.php");
+      die();
     }
   } else {
     header("Location: ../Views/adicionar-produto.php");
+    die();
   }
 
   $i = new imagens();
-  $parte1 = $i->inserir($img);
+  $imagemId = $i->inserir($img);
 
-  if (!$parte1) {
+  if ($imagemId == 0) {
     header("Location: ../Views/adicionar-produto.php");
     die();
   } else {
     //mover a imagem para o diretório a qual ficará armazenado
     move_uploaded_file($imagem["tmp_name"], "../Imagens/" . $novo_nome[0] . "." . $tipo[1]);
+    $img->setId($imagemId);
   }
 
   $cat = new Categoria();
@@ -57,11 +61,21 @@ try {
   $produto = new Produto();
   $produto->setNome($nome);
   $produto->setPreco($preco);
+  $produto->setDescricao($descricao);
   $produto->setQuantidade($quantidade);
   $produto->setCategoria($cat);
+  $produto->setImagem($img);
+  if ($imagem["size"] != 0) {
+    $produto->setTemImagem(true);
+  } else {
+    $produto->setTemImagem(false);
+  }
 
   $prod = new produtos();
-  $prod->inserir($produto);
+  $produtoId = $prod->inserir($produto);
+
+  echo $produtoId;
+  die();
 
   header("Location: ../Views/listar-produtos.php");
 

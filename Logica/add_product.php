@@ -75,8 +75,15 @@ try {
   $produtoId = $prod->inserir($produto);
 
   if ($produtoId == 0) {
-    header("Location: ../Views/adicionar-produto.php");
-    die();
+    $roll1 = new imagens();
+    $delImg = new Imagem();
+    $delImg->setId($imagemId);
+    unlink("../Imagens/" . $novo_nome[0] . "." . $tipo[1]);
+    $apagou = $roll1->apagarImagem($delImg);
+    if ($apagou) {
+      header("Location: ../Views/adicionar-produto.php");
+      die();
+    }
   } else {
     $produto->setId($produtoId);
   }
@@ -89,7 +96,18 @@ try {
   if ($resposta) {
     header("Location: ../Views/listar-produtos.php");
   } else {
-    var_dump($resposta);
+    $roll1 = new imagens();
+    $delImg = new Imagem();
+    $delImg->setId($imagemId);
+    unlink("../Imagens/" . $novo_nome[0] . "." . $tipo[1]);
+    $apagou = $roll1->apagarImagem($delImg);
+    $roll2 = new produtos();
+    $delPro = new Produto();
+    $delPro->setId($produtoId);
+    $apagou2 = $roll2->deletar($delPro);
+    if ($apagou == true && $apagou2 == true) {
+      var_dump($resposta);
+    }
   }
 
 } catch (Exception $e) {

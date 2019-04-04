@@ -50,6 +50,26 @@ class imagens {
       }
       $conexao->close();
     }
+
+    public function apagarImagem(Imagem $imagem) {
+      $conexao = Conexao::pegarConexao();
+      try {
+        $query = "DELETE FROM imagens WHERE id = :id";
+        $conexao->beginTransaction();
+          $stmt = $conexao->prepare($query);
+          $stmt->bindValue(":id", $imagem->getId());
+          $resposta = $stmt->execute();
+          $apagou = $resposta;
+        $conexao->commit();
+        return $apagou;
+        $stmt = null;
+      } catch (PDOException $e) {
+        $conexao->rollback();
+        return "Erro " . $e->getMessage();
+      }
+        $conexao = null;
+    }
+
 }
 
 ?>

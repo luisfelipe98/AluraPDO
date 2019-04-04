@@ -80,8 +80,8 @@ class produtos {
     $conexao = Conexao::pegarConexao();
     $stmt = $conexao->prepare($query);
     $stmt->bindValue(":id", $prod->getId());
-    $stmt->execute();
-
+    $resposta = $stmt->execute();
+    return $resposta;
   }
 
   public function exibirProdutos(Categoria $cat) {

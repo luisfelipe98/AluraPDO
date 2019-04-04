@@ -92,8 +92,6 @@ try {
     var_dump($resposta);
   }
 
-
-
 } catch (Exception $e) {
   Erro::trataErro($e);
 }
